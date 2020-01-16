@@ -22,25 +22,30 @@ class TodoForm extends React.Component {
     e.preventDefault();
     // Where does it get addNewItem
     this.props.addNewItem(this.state.newItem);
+    this.setState({
+      newItem: ""
+    });
 
   }
 
   render() {
     return(
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor="newTodo"> Add New To-do
-          <input
-            // this.handleSubmit --> this makes ref to class TodoForm
-            onChange={this.handleChanges}
-            type="text"
-            name="newTodo"
-            // WHAT DOES THIS DO AGAIN?
-            value={this.state.newItem}
-          />
-        </label>
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <label htmlFor="newTodo"> Add New To-do
+            <input
+              // this.handleSubmit --> this makes ref to class TodoForm
+              onChange={this.handleChanges}
+              type="text"
+              name="newTodo"
+              // WHAT DOES THIS DO AGAIN?
+              value={this.state.newItem}
+            />
+          </label>
+          <button>Add To-do</button>
+        </form>
         <button onClick={this.props.clearTodo}>Clear Completed</button>
-        <button type="submit">Add To-do</button>
-      </form>
+      </div>
     )
   }
 
